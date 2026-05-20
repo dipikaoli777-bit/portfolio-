@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dipika Oli | Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#2f4f4f;
+      color:#fff;
+    }
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      background:#000;
+      padding:20px 0;
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+
+    nav .container{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      color:#7fffd4;
+    }
+
+    nav ul{
+      display:flex;
+      list-style:none;
+      gap:25px;
+    }
+
+    nav ul li a{
+      color:white;
+      text-decoration:none;
+      transition:0.3s;
+      font-size:15px;
+    }
+
+    nav ul li a:hover{
+      color:#7fffd4;
+    }
+
+    /* HERO SECTION */
+
+    .hero{
+      background:#efefef;
+      color:#222;
+      padding:80px 0;
+    }
+
+    .hero-content{
+      display:grid;
+      grid-template-columns:1fr 1.5fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .hero img{
+      width:100%;
+      max-width:350px;
+      border-radius:20px;
+      border:5px solid #2f4f4f;
+      margin:auto;
+      display:block;
+    }
+
+    .hero-text h1{
+      font-size:48px;
+      color:#2f4f4f;
+      margin-bottom:10px;
+    }
+
+    .hero-text h3{
+      color:#555;
+      margin-bottom:25px;
+      font-weight:500;
+    }
+
+    .hero-text p{
+      line-height:1.9;
+      margin-bottom:20px;
+      text-align:justify;
+    }
+
+    .contact p{
+      margin-bottom:10px;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:20px;
+      padding:12px 28px;
+      background:#2f4f4f;
+      color:white;
+      text-decoration:none;
+      border-radius:8px;
+      transition:0.3s;
+      margin-right:15px;
+    }
+
+    .btn:hover{
+      background:#000;
+    }
+
+    /* CARD SECTION */
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    }
+
+    .card{
+      padding:50px 30px;
+      min-height:320px;
+      text-align:center;
+    }
+
+    .card h2{
+      margin-bottom:25px;
+      font-size:25px;
+    }
+
+    .card ul{
+      list-style:none;
+    }
+
+    .card li{
+      margin-bottom:12px;
+      line-height:1.8;
+    }
+
+    .dark{
+      background:#000;
+      color:white;
+    }
+
+    .gray{
+      background:#666;
+      color:white;
+    }
+
+    .light{
+      background:#f2f2f2;
+      color:#222;
+    }
+
+    .green{
+      background:#63d3b4;
+      color:white;
+    }
+
+    /* RESUME SECTION */
+
+    .resume-section{
+      background:white;
+      padding:80px 0;
+      color:#222;
+    }
+
+    .resume-section h2{
+      text-align:center;
+      font-size:42px;
+      margin-bottom:50px;
+      color:#2f4f4f;
+    }
+
+    .resume-container{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:50px;
+      flex-wrap:wrap;
+    }
+
+    
+
+    .resume-content{
+      max-width:500px;
+    }
+
+    .resume-content p{
+      line-height:1.9;
+      margin-bottom:25px;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#000;
+      text-align:center;
+      padding:25px;
+      font-size:14px;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:900px){
+
+      .hero-content{
+        grid-template-columns:1fr;
+        text-align:center;
+      }
+
+      .hero-text p{
+        text-align:center;
+      }
+
+      nav .container{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+    <div class="container">
+
+      <div class="logo">Dipika Oli</div>
+
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#resume">Resume</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+
+  <section class="hero" id="about">
+
+    <div class="container hero-content">
+
+      <div>
+        <img src="profile.jpg" alt="Dipika Oli">
+      </div>
+
+      <div class="hero-text">
+
+        <h1>Dipika Oli</h1>
+
+        <h3>Geomatics Engineering Student</h3>
+
+        <p>
+          I am a passionate Geomatics Engineering undergraduate at Kathmandu University with strong interests in GIS, Remote Sensing, Surveying, and Web Mapping. I enjoy learning geospatial technologies and applying spatial analysis techniques for solving real-world problems.
+        </p>
+
+        <p>
+          I actively participate in technical workshops, university programs, leadership activities, and geospatial projects to improve my professional and technical skills.
+        </p>
+
+        <div class="contact">
+          <p>📍 Rukum West, Nepal</p>
+          <p>📞 +977 9848344987</p>
+          <p>📧 dipikaoli777@gmail.com</p>
+        </div>
+
+        <a href="#resume" class="btn">View Resume</a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CARDS SECTION -->
+
+  <section class="cards">
+
+    <div class="card dark" id="skills">
+
+      <h2>Technical Skills</h2>
+
+      <ul>
+        <li>GIS Analysis</li>
+        <li>Remote Sensing</li>
+        <li>Surveying Techniques</li>
+        <li>Field Data Collection</li>
+        <li>Spatial Analysis</li>
+        <li>Python & HTML Basics</li>
+      </ul>
+
+    </div>
+
+    <div class="card gray" id="projects">
+
+      <h2>Academic Projects</h2>
+
+      <ul>
+        <li>Flood Susceptibility Analysis</li>
+        <li>Thematic Map Preparation</li>
+        <li>AHP Based Mapping</li>
+        <li>Drainage Density Analysis</li>
+        <li>Spatial Risk Assessment</li>
+      </ul>
+
+    </div>
+
+    <div class="card light">
+
+      <h2>Experience</h2>
+
+      <ul>
+        <li>Executive Member – CCRC Club</li>
+        <li>OC Member – NepGeom Pre-events</li>
+        <li>Volunteer – Harvard Health Hackathon</li>
+        <li>University Technical Activities</li>
+      </ul>
+
+    </div>
+
+    <div class="card green">
+
+      <h2>Workshops</h2>
+
+      <ul>
+        <li>OpenStreetMap (OSM)</li>
+        <li>CORS Training</li>
+        <li>Google Earth Engine</li>
+        <li>Remote Sensing & GIS</li>
+        <li>Web GIS Applications</li>
+      </ul>
+
+    </div>
+
+  </section>
+
+  <!-- RESUME SECTION -->
+
+  <section class="resume-section" id="resume">
+
+    <div class="container">
+
+      <h2>My Resume</h2>
+
+      <div class="resume-container">
+
+
+        <div class="resume-content">
+
+          <p>
+            Download or view my complete professional resume including education, technical skills, projects, leadership activities, workshops, and achievements in Geomatics Engineering.
+          </p>
+
+          <a href="Dipika_Oli_Resume.pdf" target="_blank" class="btn">
+            View Resume
+          </a>
+
+          <a href="Dipika_Oli_Resume.pdf" download class="btn">
+            Download CV
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 Dipika Oli | Geomatics Engineering Portfolio
+  </footer>
+
+</body>
+</html>
