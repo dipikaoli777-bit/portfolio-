@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dipika Oli | Portfolio</title>
-
+  <link rel="stylesheet"
+href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -221,7 +222,19 @@
       padding:25px;
       font-size:14px;
     }
+ #map{
+  height:700px;
+  border-radius:15px;
+  margin-top:20px;
+}
 
+.info{
+  padding:10px;
+  background:white;
+  color:black;
+  border-radius:5px;
+  box-shadow:0 0 15px rgba(0,0,0,0.2);
+}
     /* RESPONSIVE */
 
     @media(max-width:900px){
@@ -246,6 +259,7 @@
       }
 
     }
+   
 
   </style>
 </head>
@@ -261,9 +275,13 @@
 
       <ul>
         <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#resume">Resume</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#webgis">WebGIS</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+
       </ul>
 
     </div>
@@ -294,9 +312,24 @@
         </p>
 
         <div class="contact">
-          <p>📍 Rukum West, Nepal</p>
-          <p>📞 +977 9848344987</p>
-          <p>📧 dipikaoli777@gmail.com</p>
+            <p>📍 Rukum West, Nepal</p>
+  <p>📞 +977 9848344987</p>
+
+  <p>
+    📧
+    <a href="mailto:dipikaoli777@gmail.com">
+      dipikaoli777@gmail.com
+    </a>
+  </p>
+
+  <p>
+    💼
+    <a href="https://www.linkedin.com/in/dipika-oli-62045835a"
+       target="_blank"
+       style="color:#2f4f4f;font-weight:600;">
+      LinkedIn Profile
+    </a>
+  </p>
         </div>
 
         <a href="#resume" class="btn">View Resume</a>
@@ -368,6 +401,48 @@
     </div>
 
   </section>
+  <section class="resume-section" id="education">
+
+  <div class="container">
+
+    <h2>Education</h2>
+
+    <div class="resume-content">
+
+      <h3>B.E. in Geomatics Engineering</h3>
+
+      <p>
+        Kathmandu University<br>
+        2022 – Present
+      </p>
+
+      <h3>+2 Science</h3>
+
+      <p>
+        CCRC College<br>
+        2019 – 2021
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+<section class="resume-section" id="webgis">
+
+  <div class="container">
+
+    <h2>Featured WebGIS Project</h2>
+
+    <p style="text-align:center;margin-bottom:20px;">
+      District-wise Population Distribution of Nepal (Census 2021)
+    </p>
+
+    <div id="map"></div>
+
+  </div>
+
+</section>
 
   <!-- RESUME SECTION -->
 
@@ -386,11 +461,11 @@
             Download or view my complete professional resume including education, technical skills, projects, leadership activities, workshops, and achievements in Geomatics Engineering.
           </p>
 
-          <a href="Dipika_Oli_Resume.pdf" target="_blank" class="btn">
+          <a href="Resume.pdf" target="_blank" class="btn">
             View Resume
           </a>
 
-          <a href="Dipika_Oli_Resume.pdf" download class="btn">
+          <a href="Resume.pdf" download class="btn">
             Download CV
           </a>
 
@@ -400,13 +475,198 @@
 
     </div>
 
-  </section>
 
+  </section>
+  
+<section class="resume-section" id="contact">
+
+  <div class="container">
+
+    <h2>Contact</h2>
+
+    <div class="resume-content">
+
+      <p>
+        📧 Email:
+        <a href="mailto:dipikaoli777@gmail.com">
+          dipikaoli777@gmail.com
+        </a>
+      </p>
+
+      <p>
+        💼 LinkedIn:
+        <a href="https://www.linkedin.com/in/dipika-oli-62045835a"
+           target="_blank">
+          View LinkedIn Profile
+        </a>
+      </p>
+
+      <p>
+        📞 +977 9848344987
+      </p>
+
+      <p>
+        📍 Rukum West, Nepal
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
   <!-- FOOTER -->
 
   <footer>
     © 2026 Dipika Oli | Geomatics Engineering Portfolio
   </footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+<script>
+
+var map = L.map('map').setView([28.2,84],7);
+
+L.tileLayer(
+'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+{
+maxZoom:19
+}
+).addTo(map);
+
+var info = L.control();
+
+info.onAdd = function(){
+
+this._div = L.DomUtil.create('div','info');
+this.update();
+
+return this._div;
+
+};
+
+info.update = function(props){
+
+this._div.innerHTML = props ?
+
+'<h4>District Information</h4>' +
+'<b>' + props.DISTRICT + '</b><br>' +
+'Population: ' + props.population_Total.toLocaleString() + '<br>' +
+'Male: ' + props.population_Male.toLocaleString() + '<br>' +
+'Female: ' + props.population_Female.toLocaleString() + '<br>' +
+'Area: ' + props.Area + ' km²<br>' +
+'Density: ' + props.PD
+
+:
+
+'Hover over a district';
+
+};
+
+info.addTo(map);
+
+function getColor(d){
+
+return d > 1000000 ? '#800026' :
+       d > 500000 ? '#BD0026' :
+       d > 250000 ? '#E31A1C' :
+       d > 150000 ? '#FC4E2A' :
+       d > 100000 ? '#FD8D3C' :
+                    '#FEB24C';
+
+}
+
+function style(feature){
+
+return {
+
+fillColor:
+getColor(feature.properties.population_Total),
+
+weight:1,
+opacity:1,
+color:'white',
+fillOpacity:0.7
+
+};
+
+}
+
+function highlightFeature(e){
+
+var layer = e.target;
+
+layer.setStyle({
+weight:3,
+color:'#666'
+});
+
+info.update(layer.feature.properties);
+
+}
+
+function resetHighlight(e){
+
+geojson.resetStyle(e.target);
+
+info.update();
+
+}
+
+function zoomToFeature(e){
+
+map.fitBounds(e.target.getBounds());
+
+}
+
+function onEachFeature(feature,layer){
+
+layer.on({
+mouseover:highlightFeature,
+mouseout:resetHighlight,
+click:zoomToFeature
+});
+
+}
+
+var geojson;
+
+fetch("nepal_districts_population.geojson")
+
+.then(response => response.json())
+
+.then(data => {
+
+geojson = L.geoJSON(data,{
+
+style:style,
+
+onEachFeature:onEachFeature
+
+}).addTo(map);
+
+map.fitBounds(geojson.getBounds());
+
+});
+
+var legend = L.control({position:'bottomright'});
+
+legend.onAdd = function(){
+
+var div = L.DomUtil.create('div','info');
+
+div.innerHTML =
+'<h4>Population</h4>' +
+'<i style="background:#800026;width:18px;height:18px;display:inline-block"></i> >1,000,000<br>' +
+'<i style="background:#BD0026;width:18px;height:18px;display:inline-block"></i> 500k - 1M<br>' +
+'<i style="background:#E31A1C;width:18px;height:18px;display:inline-block"></i> 250k - 500k<br>' +
+'<i style="background:#FC4E2A;width:18px;height:18px;display:inline-block"></i> 150k - 250k<br>' +
+'<i style="background:#FD8D3C;width:18px;height:18px;display:inline-block"></i> 100k - 150k<br>';
+
+return div;
+
+};
+
+legend.addTo(map);
+
+</script>
 </body>
 </html>
